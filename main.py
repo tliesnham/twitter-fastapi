@@ -1,8 +1,8 @@
 from typing import List
 
-from pydantic import BaseModel
-
 from fastapi import FastAPI, HTTPException
+
+from schemas import TweetCreate, Tweet, User
 
 app = FastAPI()
 
@@ -45,24 +45,6 @@ tweets = [
         "text": "This is another tweet",
     },
 ]
-
-class TweetCreate(BaseModel):
-    user_id: int
-    text: str
-
-class Tweet(BaseModel):
-    id: int
-    user_id: int
-    text: str
-
-class UserCreate(BaseModel):
-    username: str
-    email: str
-
-class User(BaseModel):
-    id: int
-    username: str
-    email: str
 
 @app.get("/tweet/{tweet_id}", status_code=200, response_model=Tweet)
 async def get_tweet(tweet_id: int):
