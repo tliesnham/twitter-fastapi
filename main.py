@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import FastAPI, HTTPException
 
-from schemas import TweetCreate, Tweet, User
+from db.schemas import TweetCreate, Tweet, User
 
 app = FastAPI()
 
